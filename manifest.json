@@ -1,0 +1,29 @@
+{
+  "manifest_version": 2,
+  "name": "Pricing Grabber",
+  "version": "1.0",
+
+  "description": "Allows user to grab pricing data directly from websites as you browse. Information can be stored and used for price comparison. Allows you to do manual web scrapping.",
+  "homepage_url": "https://github.com/alm266/ProductGrabberExtension",
+  "icons": {
+    "30": "icons/add-cart-30.png",
+    "60": "icons/add-cart-60.png",
+    "90": "icons/add-cart-90.png"
+  },
+
+  "permissions": [
+    "activeTab"
+  ],
+
+  "browser_action": {
+    "default_icon": "icons/add-cart-30.png",
+    "default_title": "Price Grabber",
+    "default_popup": "popup/options.html"
+  },
+
+  "web_accessible_resources": [
+    "beasts/frog.jpg",
+    "beasts/turtle.jpg",
+    "beasts/snake.jpg"
+  ]
+}
