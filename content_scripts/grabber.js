@@ -80,6 +80,19 @@ function tryGrabPrice(text) {
 
     let decimalRegEx = new RegExp("\d+");
     let outputText = text.match(decimalRegEx);
-    let output = outputText.input.substring(dollarSignIndex, dollarSignIndex + 6)
+    let endIndex = dollarSignIndex + 1;
+    while (outputText.input.charAt(endIndex) !== undefined) {
+        const char = outputText.input.charAt(endIndex);
+        if (isNumeric(char) || char === '.' || char === ',') {
+            endIndex++;
+            continue;
+        }
+        break;
+    }
+    let output = outputText.input.substring(dollarSignIndex, endIndex)
     console.log(output);
+}
+
+function isNumeric(str) {
+    return !isNaN(str - parseFloat(str));
 }
