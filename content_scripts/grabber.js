@@ -78,21 +78,25 @@ function tryGrabPrice(text) {
         return '';  // Did not find a price
     }
 
-    let decimalRegEx = new RegExp("\d+");
-    let outputText = text.match(decimalRegEx);
+    const decimalRegEx = new RegExp("\d+");
+    const outputText = text.match(decimalRegEx);
     let endIndex = dollarSignIndex + 1;
-    while (outputText.input.charAt(endIndex) !== undefined) {
-        const char = outputText.input.charAt(endIndex);
+    let char = outputText.input.charAt(endIndex)
+    const input = outputText.input;
+    while (char !== undefined) {
+        // Check if this is this part of a number
         if (isNumeric(char) || char === '.' || char === ',') {
             endIndex++;
+            char = input.charAt(endIndex);
             continue;
         }
         break;
     }
-    let output = outputText.input.substring(dollarSignIndex, endIndex)
+    let output = input.substring(dollarSignIndex, endIndex)
     console.log(output);
 }
 
 function isNumeric(str) {
+    // isNaN tells is a value cannot be converted into a number
     return !isNaN(str - parseFloat(str));
 }
